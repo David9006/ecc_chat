@@ -50,6 +50,7 @@ def encrypt(recipient_pub_bytes: bytes,
     aesgcm = AESGCM(key)
     nonce = secrets.token_bytes(12)
     ct = aesgcm.encrypt(nonce, plaintext, aad)
+
     # return ephemeral public | nonce | ciphertext
     return eph_pub + nonce + ct
 
@@ -82,8 +83,12 @@ def decrypt(recipient_priv_bytes: bytes,
     eph_pub = packed[:32]
     nonce = packed[32:44]
     ct = packed[44:]
+
+    # compute key
     priv = X25519PrivateKey.from_private_bytes(recipient_priv_bytes)
     shared = priv.exchange(X25519PublicKey.from_public_bytes(eph_pub))
     key = HKDF(algorithm=hashes.SHA256(), length=32, salt=None,
                info=b"ecies").derive(shared)
+
+    # decrypt
     return AESGCM(key).decrypt(nonce, ct, aad)

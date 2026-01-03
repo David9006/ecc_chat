@@ -1,26 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>404 — Not Found</title>
-  <style>
-    :root{ --bg:#0f1724; --card:#0b1220; --muted:#9ca3af; --accent:#5865f2; --maxw:900px }
-    html,body{height:100%; margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:linear-gradient(180deg,var(--bg), #071029 80%); color:var(--muted);}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:60px 20px; text-align:center}
-    .card{background:rgba(255,255,255,0.02); padding:40px; border-radius:12px; display:inline-block; min-width:280px}
-    h1{margin:0; font-size:3rem; color:white}
-    p{margin:12px 0 20px}
-    a.btn{display:inline-block; padding:10px 16px; border-radius:8px; background:var(--accent); color:white; text-decoration:none; font-weight:700}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="card" role="alert">
-      <h1>404</h1>
-      <p>We couldn't find the page you were looking for. It may have been moved or deleted.</p>
+{% extends "base.html" %}
+
+{% block title %}404 — Not Found{% endblock %}
+
+{% block content %}
+<div style="max-width:900px; margin:60px auto; text-align:center; padding:0 20px;">
+  <div
+    style="display:inline-block; background:rgba(255,255,255,0.02); padding:40px; border-radius:12px; min-width:280px;"
+    role="alert">
+    <h1 style="margin:0; font-size:3rem; color:white;">404</h1>
+    <p style="margin:12px 0 20px;">We couldn't find the page you were looking for. It may have been moved or deleted.
+    </p>
       <a class="btn" href="/">Go back home</a>
     </div>
   </div>
-</body>
-</html>
+{% endblock %}

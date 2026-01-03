@@ -25,8 +25,8 @@ def encrypt(recipient_pub_bytes: bytes,
     Returns
     -------
     bytes
-        Concatenation: ephemeral public key (32 bytes, raw format) ||
-        12-byte AES-GCM nonce || AES-GCM ciphertext (ciphertext + tag).
+        Concatenation: ephemeral public key (32 bytes, raw format) |
+        12-byte AES-GCM nonce | AES-GCM ciphertext (ciphertext + tag).
 
     Notes
     -----
@@ -64,7 +64,7 @@ def decrypt(recipient_priv_bytes: bytes,
     recipient_priv_bytes : bytes
         The recipient's raw X25519 private key (32 bytes, raw format).
     packed : bytes
-        Data output from encrypt(): eph_pub || nonce || ciphertext.
+        Data output from encrypt(): eph_pub | nonce | ciphertext.
     aad : Optional[bytes], optional
         Additional authenticated data used during encryption, by default None.
 

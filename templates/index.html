@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>ECC Chat — Connect securely</title>
+	<style>
+		:root{
+			--bg:#0f1724; --card:#0b1220; --muted:#9ca3af; --accent:#5865f2; --accent-2:#2ea44f; --glass: rgba(255,255,255,0.04);
+			--maxw:1100px;
+		}
+		[data-theme="light"]{
+			--bg:#f6f8fb; --card:#fff; --muted:#374151; --accent:#2563eb; --accent-2:#16a34a; --glass: rgba(0,0,0,0.04);
+		}
+		html,body{height:100%; margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,var(--bg), #071029 80%); color:var(--muted);}
+		.container{max-width:var(--maxw); margin:0 auto; padding:36px 20px;}
+		.topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px;}
+		.brand{display:flex; align-items:center; gap:12px; color:white; font-weight:700; font-size:1.15rem;}
+		.logo{width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,var(--accent), #7c5cff); display:inline-block;}
+		.nav{display:flex; gap:12px; align-items:center;}
+		.nav a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600;}
+		.ctas{display:flex; gap:10px; align-items:center;}
+		.btn{background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700; text-decoration:none;}
+		.btn.alt{background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.06);}
+		.hero{display:flex; gap:28px; align-items:center; padding:40px 0; flex-wrap:wrap;}
+		.heroText{flex:1; min-width:260px;}
+		.h1{font-size:2.25rem; line-height:1.05; color:white; margin:0 0 12px;}
+		.promo{color:var(--muted); margin:0 0 18px; font-size:1rem;}
+		.heroMedia{width:480px; max-width:48%; min-width:220px; background:var(--card); border-radius:12px; padding:16px; box-shadow:0 10px 30px rgba(2,6,23,0.5);}
+		.featureGrid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;}
+		.feature{background:var(--glass); padding:18px; border-radius:10px; color:var(--muted);}
+		.feature h4{margin:0 0 8px; color:white;}
+		.footer{margin-top:48px; padding:24px 0; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:12px;}
+		.note{font-size:0.9rem;}
+		/* responsive */
+		@media (max-width:900px){
+			.hero{flex-direction:column-reverse; align-items:stretch;}
+			.heroMedia{max-width:100%;}
+			.featureGrid{grid-template-columns:repeat(2,1fr);}
+		}
+		@media (max-width:600px){
+			.featureGrid{grid-template-columns:1fr;}
+			.topbar{padding:0 6px;}
+			.h1{font-size:1.6rem;}
+		}
+	</style>
+</head>
+<body data-theme="dark">
+	<div class="container">
+		<header class="topbar" role="banner">
+			<div class="brand" aria-hidden="true">
+				<span class="logo" aria-hidden="true"></span>
+				<span>ECC Chat</span>
+			</div>
+
+			<nav class="nav" aria-label="Primary">
+				<a href="#features">Features</a>
+				<a href="#security">Security</a>
+				<a href="#pricing">Pricing</a>
+			</nav>
+
+			<div class="ctas">
+				<button id="themeToggle" class="btn alt" aria-label="Toggle theme">Light</button>
+				<a href="/signup" class="btn">Sign up</a>
+				<a href="/login" class="btn alt">Log in</a>
+			</div>
+		</header>
+
+		<main>
+			<section class="hero" aria-labelledby="hero-title">
+				<div class="heroText">
+					<h1 id="hero-title" class="h1">Private, fast, and secure chat for teams and friends</h1>
+					<p class="promo">ECC Chat brings end-to-end encrypted messaging, lightweight voice channels, and developer-friendly APIs — without the noise. Invite teammates, create rooms, and collaborate in real time.</p>
+					<div style="display:flex; gap:12px; flex-wrap:wrap;">
+						<a href="/signup" class="btn">Create an account</a>
+						<a href="/login" class="btn alt">Sign in</a>
+						<a href="#features" class="btn alt" style="border-style:dashed;">Learn more</a>
+					</div>
+
+					<div id="features" class="featureGrid" style="margin-top:20px;">
+						<div class="feature">
+							<h4>End-to-end encryption</h4>
+							<p class="note">Messages are encrypted on-device, so only participants can read them.</p>
+						</div>
+						<div class="feature">
+							<h4>Low-latency</h4>
+							<p class="note">Optimized real-time transport for smooth messaging and voice.</p>
+						</div>
+						<div class="feature">
+							<h4>Developer friendly</h4>
+							<p class="note">Simple WebSocket and REST APIs so you can integrate quickly.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="heroMedia" aria-hidden="true">
+					<!-- Mockup: non-functional preview of UI -->
+					<div style="height:300px; border-radius:8px; overflow:hidden; background:linear-gradient(180deg,#061124 0%, #08243a 100%); color:var(--muted); padding:12px; box-sizing:border-box;">
+						<div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+							<div style="width:8px; height:8px; background:#ff5f56; border-radius:50%;"></div>
+							<div style="width:8px; height:8px; background:#ffbd2e; border-radius:50%;"></div>
+							<div style="width:8px; height:8px; background:#27c93f; border-radius:50%;"></div>
+							<div style="margin-left:auto; color:var(--muted); font-size:12px;">Preview</div>
+						</div>
+
+						<div style="display:flex; gap:12px; height:230px;">
+							<div style="width:120px; background:rgba(255,255,255,0.02); border-radius:8px; padding:10px; box-sizing:border-box;">
+								<div style="height:10px;"></div>
+								<div style="height:10px; width:80%; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:8px;"></div>
+								<div style="height:10px; width:60%; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:8px;"></div>
+								<div style="height:10px; width:90%; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:8px;"></div>
+							</div>
+							<div style="flex:1; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:8px; padding:10px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between;">
+								<div style="color:var(--muted); font-size:12px;"># general</div>
+								<div style="flex:1; margin:8px 0; overflow:hidden;">
+									<div style="background:rgba(255,255,255,0.04); padding:8px; border-radius:8px; width:65%; margin-bottom:8px;">Welcome to ECC Chat</div>
+									<div style="background:rgba(255,255,255,0.03); padding:8px; border-radius:8px; width:50%; margin-bottom:8px;">This preview is static</div>
+								</div>
+								<div style="display:flex; gap:8px;">
+									<div style="flex:1; height:36px; background:rgba(255,255,255,0.02); border-radius:8px;"></div>
+									<div style="width:64px; height:36px; background:var(--accent); border-radius:8px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="security" style="margin-top:28px;">
+				<h3 style="color:white;margin:0 0 12px;">Security & privacy</h3>
+				<p class="note" style="max-width:720px;">ECC Chat is built with modern cryptography and privacy-first defaults. You control keys for private conversations and can audit transport logs using our open tools.</p>
+			</section>
+
+			<section id="pricing" style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+				<div style="background:var(--card); padding:16px; border-radius:12px; min-width:220px;">
+					<h4 style="margin:0 0 8px;">Free</h4>
+					<p class="note">Personal use, small teams, basic features.</p>
+				</div>
+				<div style="background:var(--card); padding:16px; border-radius:12px; min-width:220px;">
+					<h4 style="margin:0 0 8px;">Team</h4>
+					<p class="note">Advanced controls, admin tools, priority support.</p>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer" role="contentinfo">
+			<div class="note">© <strong>ECC Chat</strong> — Built with privacy in mind.</div>
+			<div style="display:flex; gap:12px; align-items:center;">
+				<a href="/docs" class="note" style="color:var(--muted); text-decoration:none;">Docs</a>
+				<a href="/terms" class="note" style="color:var(--muted); text-decoration:none;">Terms</a>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		// Theme toggle (simple)
+		(function(){
+			const btn = document.getElementById('themeToggle');
+			const root = document.body;
+			// default dark; sync with saved pref
+			const saved = localStorage.getItem('ecc_theme');
+			if(saved) root.setAttribute('data-theme', saved);
+			function updateLabel(){
+				btn.textContent = (root.getAttribute('data-theme') === 'light') ? 'Dark' : 'Light';
+			}
+			updateLabel();
+			btn.addEventListener('click', ()=>{
+				const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+				root.setAttribute('data-theme', cur);
+				localStorage.setItem('ecc_theme', cur);
+				updateLabel();
+			});
+		})();
+	</script>
+</body>
+</html>

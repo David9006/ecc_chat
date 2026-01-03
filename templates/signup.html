@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Sign up — ECC Chat{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-3">Create an account</h4>
+          <form method="post" action="/signup">
+            <div class="mb-3">
+              <label class="form-label">Display name</label>
+              <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="d-grid mb-2">
+              <button class="btn btn-success">Sign up</button>
+            </div>
+          </form>
+          <hr>
+          <div class="text-center small">Already have an account? <a href="/login">Log in</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

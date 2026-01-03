@@ -1,23 +1,36 @@
-{% extends "base.html" %}
-
-{% block title %}Log in — ECC Chat{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Login — ECC Chat{% endblock %}
 
 {% block content %}
-  <div style="max-width:480px; margin:40px auto; padding:20px;">
-    <div style="background:var(--card); padding:24px; border-radius:12px;">
-      <h2 style="margin:0 0 12px; color:white;">Sign in to ECC Chat</h2>
-      <form method="post" action="/login" style="display:flex; flex-direction:column; gap:10px;">
-        <label style="color:var(--muted); font-size:0.9rem;">Email</label>
-        <input name="email" type="email" required style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted);" />
-
-        <label style="color:var(--muted); font-size:0.9rem;">Password</label>
-        <input name="password" type="password" required style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted);" />
-
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; margin-top:8px;">
-          <a href="/signup" class="btn alt" style="text-decoration:none;">Create account</a>
-          <button type="submit" class="btn">Sign in</button>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Login to ECC Chat</h4>
+                <form method="post" action="/login">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="small">Forgot?</a>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+        <hr>
+        <div class="text-center small">Don't have an account? <a href="/signup">Sign up</a></div>
         </div>
-      </form>
+        </div>
     </div>
   </div>
 {% endblock %}
